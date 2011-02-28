@@ -11,6 +11,14 @@ module SimpleForm
   autoload :Inputs,            'simple_form/inputs'
   autoload :MapType,           'simple_form/map_type'
 
+  # Default tag used on commit buttons.
+  mattr_accessor :commit_tag
+  @@commit_tag = :button
+
+  # CSS class to add to all commit button tags.
+  mattr_accessor :commit_class
+  @@commit_class = :commit
+
   # Default tag used on hints.
   mattr_accessor :hint_tag
   @@hint_tag = :span

@@ -227,6 +227,22 @@ module SimpleForm
       SimpleForm::Inputs::Base.new(self, attribute_name, column, input_type, options).label
     end
 
+    # Creates a button tag.
+    #
+    # == Examples
+    #
+    #    f.commit :submit                                      # Create button[type=submit] and do I18n label lookup for commits.(model_name.action or model or action).submit
+    #    f.commit :reset                                       # Create button[type=reset] and do I18n label lookup for commits.(model_name.action or model or action).reset
+    #    f.commit :button                                      # Create button[type=button] and do I18n label lookup for commits.(model_name.action or model or action).button
+    #    f.commit :something, :type => [submit button reset]   # Create button[type=type] and do I18n label lookup for commits.(model_name.action or model or action).something
+    #
+    def commit(attribute_name, options={})
+      options[:commit_html] = options.dup
+      options[:commit_html][:type] ||= attribute_name
+      column, input_type = nil, nil
+      SimpleForm::Inputs::Base.new(self, attribute_name, column, input_type, options).commit
+    end
+
     # Creates an error notification message that only appears when the form object
     # has some error. You can give a specific message with the :message option,
     # otherwise it will look for a message using I18n. All other options given are

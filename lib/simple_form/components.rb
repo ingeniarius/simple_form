@@ -6,5 +6,6 @@ module SimpleForm
     autoload :Labels,       'simple_form/components/labels'
     autoload :Placeholders, 'simple_form/components/placeholders'
     autoload :Wrapper,      'simple_form/components/wrapper'
+    autoload :Commits,      'simple_form/components/commits'
   end
 end

@@ -14,6 +14,7 @@ module SimpleForm
       include SimpleForm::Components::LabelInput
       include SimpleForm::Components::Placeholders
       include SimpleForm::Components::Wrapper
+      include SimpleForm::Components::Commits
 
       attr_reader :attribute_name, :column, :input_type, :reflection,
                   :options, :input_html_options
@@ -163,6 +164,7 @@ module SimpleForm
           lookups << :"#{joined_model_names}.#{lookup_action}.#{reflection_or_attribute_name}"
           lookups << :"#{joined_model_names}.#{reflection_or_attribute_name}"
         end
+        lookups << :"#{lookup_action}.#{attribute_name}" if attribute_name
         lookups << :"#{reflection_or_attribute_name}"
         lookups << default
 
